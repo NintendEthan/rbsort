@@ -1,6 +1,6 @@
 extern crate clap;
 use clap::{Parser,Subcommand};
-mod sorts;
+mod head;
 
 #[derive(Parser)]
 #[clap(author, version, about, long_about = None)]
@@ -29,7 +29,7 @@ fn main() {
             .map(|s| s.parse().expect("parse error"))
             .collect();
 
-        sorts::bubble_sort(&mut numbers);
+        head::sorts::bubble_sort(&mut numbers);
 
         print_vec(&numbers);
 
