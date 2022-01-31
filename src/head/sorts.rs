@@ -13,7 +13,7 @@ pub fn bubble_sort(vec: &Vec<i32>) -> Vec<i32> {
     vec_new
 }
 
-pub mod ModMerge {
+pub mod mod_merge {
     pub fn merge_sort(vec: &Vec<i32>) -> Vec<i32> {
         if vec.len() < 2 {
             vec.to_vec()
