@@ -1,2 +1,2 @@
-# rbsort
-A simple implementation of the bubble sort algorithm in rust.
+# rsort
+An implementation of various sorting algorithms in rust.
