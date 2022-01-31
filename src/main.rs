@@ -1,6 +1,8 @@
 extern crate clap;
 use clap::{Parser,Subcommand};
 mod head;
+use head::nums_from_string;
+use head::sorts::{bubble_sort,mod_merge};
 
 #[derive(Parser)]
 #[clap(author, version, about, long_about = None)]
@@ -31,15 +33,15 @@ fn main() {
 
     match &cli.command {
         Commands::Bubble { nums } => {
-            let numbers: Vec<i32> = head::nums(&nums);
-            let bubble_sorted: Vec<i32> = head::sorts::bubble_sort(&numbers);
+            let numbers: Vec<i32> = nums_from_string(&nums);
+            let bubble_sorted: Vec<i32> = bubble_sort(&numbers);
 
             println!("{:?}", bubble_sorted);
         }
         
         Commands::Merge { nums } => {
-            let numbers: Vec<i32> = head::nums(&nums);
-            let merge_sorted: Vec<i32> = head::sorts::mod_merge::merge_sort(&numbers);
+            let numbers: Vec<i32> = nums_from_string(&nums);
+            let merge_sorted: Vec<i32> = mod_merge::merge_sort(&numbers);
 
             println!("{:?}", merge_sorted);
         }   
