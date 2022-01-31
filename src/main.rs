@@ -24,21 +24,14 @@ fn main() {
     match &cli.command {
         Commands::Bubble { nums } => {
 
-        let mut numbers: Vec<i32> = nums
-            .split_whitespace()
-            .map(|s| s.parse().expect("parse error"))
-            .collect();
+            let numbers: Vec<i32> = nums
+                .split_whitespace()
+                .map(|s| s.parse().expect("parse error"))
+                .collect();
 
-        head::sorts::bubble_sort(&mut numbers);
+            let bubble_sorted: Vec<i32> = head::sorts::bubble_sort(&numbers);
 
-        print_vec(&numbers);
-
+            println!("{:?}", bubble_sorted);
         }
-    }
-}
-
-fn print_vec(vec: &Vec<i32>) {
-    for i in vec {
-        println!("{}", i);
     }
 }
