@@ -1,8 +1,8 @@
 [package]
-name = "rbsort"
+name = "rsort"
 version = "0.1.0"
 edition = "2021"
-
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+description = "perform different sorting algorithms on lists of numbers"
 
 [dependencies]
+clap = { version = "3.0.13", features = ["derive"] }
