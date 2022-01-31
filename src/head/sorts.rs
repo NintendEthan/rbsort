@@ -1,12 +1,14 @@
-pub fn bubble_sort(array: &mut Vec<i32>) {
+pub fn bubble_sort(vec: &Vec<i32>) -> Vec<i32> {
+    let mut vec_new = vec.to_vec();
     let mut swapped: bool = true;
     while swapped {
         swapped = false;
-        for i in 1..array.len() {
-            if array[i-1] > array[i] {
-                array.swap(i-1, i);
+        for i in 1..vec_new.len() {
+            if vec_new[i-1] > vec_new[i] {
+                vec_new.swap(i-1, i);
                 swapped = true;
             }
         }
     }
+    vec_new
 }
