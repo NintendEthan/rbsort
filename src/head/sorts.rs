@@ -14,15 +14,40 @@ pub fn bubble_sort(vec: &Vec<i32>) -> Vec<i32> {
 }
 
 pub mod mod_merge {
+    use std::sync::mpsc;
+    use std::thread;
+
     pub fn merge_sort(vec: &Vec<i32>) -> Vec<i32> {
         if vec.len() < 2 {
             vec.to_vec()
         } else {
-            let size = vec.len() / 2;
-            let left = merge_sort(&vec[0..size].to_vec());
-            let right = merge_sort(&vec[size..].to_vec());
-            let merged = merge(&left, &right);
+            let size = vec.len() / 2; 
+            let vec_copy: Vec<i32> = vec.to_vec(); // copy vec cause ownership
+            let (tx, rx) = mpsc::channel(); // create channel
 
+            let handle = thread::spawn(move || { // create new thread
+                let left = merge_sort(&vec_copy[0..size].to_vec()); // recurse
+                tx.send(left).unwrap(); // send new array
+            });
+
+            let left = rx.recv().unwrap(); // recieve new array
+
+            let size = vec.len() / 2;
+            let vec_copy: Vec<i32> = vec.to_vec(); // copy vec cause ownership
+            let (tx, rx) = mpsc::channel(); // re-establish channel
+
+            let handle2 = thread::spawn(move || { // spawn new thread
+                let right = merge_sort(&vec_copy[size..].to_vec()); // recurse
+                tx.send(right).unwrap(); // send new array
+            });
+
+            let right = rx.recv().unwrap();
+            
+            handle.join().unwrap();
+            handle2.join().unwrap();
+
+            let merged = merge(&left, &right);
+            
             merged
         }
     }
