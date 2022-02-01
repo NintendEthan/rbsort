@@ -7,9 +7,6 @@ use head::sorts::{bubble_sort,mod_merge};
 #[derive(Parser)]
 #[clap(author, version, about, long_about = None)]
 struct Cli {
-    // /// provide numbers in the following format: 'x y z ...'
-    // #[clap(short = '\u{006E}', long = "numbers")]
-    // nums: String,
     #[clap(subcommand)]
     command: Commands,
 }
