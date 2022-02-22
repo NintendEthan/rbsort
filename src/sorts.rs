@@ -17,12 +17,12 @@ pub mod mod_merge {
     use std::sync::mpsc;
     use std::thread;
 
-    pub fn merge_sort(vec: &Vec<i32>) -> Vec<i32> {
+    pub fn merge_sort(vec: &Vec<f32>) -> Vec<f32> {
         if vec.len() < 2 {
             vec.to_vec()
         } else {
             let size = vec.len() / 2; 
-            let vec_copy: Vec<i32> = vec.to_vec(); // copy vec cause ownership
+            let vec_copy: Vec<f32> = vec.to_vec(); // copy vec cause ownership
             let (tx, rx) = mpsc::channel(); // create channel
 
             let handle = thread::spawn(move || { // create new thread
@@ -33,7 +33,7 @@ pub mod mod_merge {
             let left = rx.recv().unwrap(); // recieve new array
 
             let size = vec.len() / 2;
-            let vec_copy: Vec<i32> = vec.to_vec(); // copy vec cause ownership
+            let vec_copy: Vec<f32> = vec.to_vec(); // copy vec cause ownership
             let (tx, rx) = mpsc::channel(); // re-establish channel
 
             let handle2 = thread::spawn(move || { // spawn new thread
@@ -52,10 +52,10 @@ pub mod mod_merge {
         }
     }
 
-    fn merge(left: &Vec<i32>, right: &Vec<i32>) -> Vec<i32> {
+    fn merge(left: &Vec<f32>, right: &Vec<f32>) -> Vec<f32> {
         let mut l = 0;
         let mut r = 0;
-        let mut merged: Vec<i32> = Vec::new();
+        let mut merged: Vec<f32> = Vec::new();
 
         while l < left.len() && r < right.len() {
             if left[l] < right[r] {
