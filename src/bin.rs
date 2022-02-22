@@ -1,8 +1,7 @@
 extern crate clap;
 use clap::{Parser,Subcommand};
-mod head;
-use head::nums_from_string;
-use head::sorts::{bubble_sort,mod_merge};
+mod sorts; // include local library
+use sorts::{bubble_sort,mod_merge};
 
 #[derive(Parser)]
 #[clap(author, version, about, long_about = None)]
@@ -43,4 +42,9 @@ fn main() {
             println!("{:?}", merge_sorted);
         }   
     }
+}
+
+fn nums_from_string(nums: &String) -> Vec<i32> {
+    let new_nums: Vec<i32> = nums.split_whitespace().map(|s| s.parse().expect("parse error")).collect();
+    new_nums
 }

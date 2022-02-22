@@ -6,3 +6,11 @@ description = "perform different sorting algorithms on lists of numbers"
 
 [dependencies]
 clap = { version = "3.0.13", features = ["derive"] }
+
+[lib]
+name = "rsort"
+path = "src/sorts.rs"
+
+[[bin]]
+name = "rsort"
+path = "src/bin.rs"
