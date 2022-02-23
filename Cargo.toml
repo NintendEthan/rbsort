@@ -1,7 +1,10 @@
 [package]
+author = "Ethan Raque"
 name = "rsort"
-version = "1.1.0"
+version = "2.1.0"
 edition = "2021"
 description = "perform different sorting algorithms on lists of numbers"
+license = "GPLv3"
+repository = "https://github.com/NintendEthan/rsort"
 
 [dependencies]
