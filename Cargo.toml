@@ -4,7 +4,7 @@ name = "rsort"
 version = "2.1.0"
 edition = "2021"
 description = "perform different sorting algorithms on lists of numbers"
-license = "GPLv3"
+license = "GPL-3.0-or-later"
 repository = "https://github.com/NintendEthan/rsort"
 
 [dependencies]
